@@ -24,7 +24,6 @@ const sendRequest = async () => {
 };
 
 cron.schedule('30 0 * * *', () => {
-  console.log('Running scheduled job...');
   sendRequest();
 }, {
   scheduled: true,
