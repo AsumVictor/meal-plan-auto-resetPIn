@@ -10,7 +10,6 @@ dotenv.config({
 })
 
 const app = express();
-const PORT = 6000;
 
 
 const getSubscribedId = async()=>{
@@ -49,14 +48,15 @@ const resetAll = async ()=>{
 
 }
 
+// Co
 
-cron.schedule('10 23 * * *', () => {
+cron.schedule('25 23 * * *', () => {
   resetAll()
 }, {
   scheduled: true,
   timezone: "GMT" 
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
