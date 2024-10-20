@@ -50,7 +50,7 @@ const resetAll = async ()=>{
 
 // Co
 
-cron.schedule('25 23 * * *', () => {
+cron.schedule('30 0 * * *', () => {
   resetAll()
 }, {
   scheduled: true,
