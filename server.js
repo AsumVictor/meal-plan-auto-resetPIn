@@ -16,8 +16,9 @@ const getSubscribedId = async()=>{
   try {
     const res = await axios.get(`https://script.google.com/macros/s/${process.env.ID}/exec?path=${process.env.sID}&action=read`)
    
+    console.log('Data fetched:', res.data.data); 
     const data = cleanData(res.data.data)
-   
+    console.log('Data Cleaned:', data); 
     return data
   } catch (error) {
     console.log(error.message)
@@ -47,7 +48,7 @@ const resetAll = async () => {
 
 }
 
-cron.schedule("30 0 * * *", () => {
+cron.schedule("*/3 * * * *", () => {
   resetAll()
 }, {
   scheduled: true,
@@ -57,4 +58,7 @@ cron.schedule("30 0 * * *", () => {
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
+  console.log(`URL:, ${process.env.MEAL_PLAN_URL}`)
+  console.log(`ID:, ${process.env.ID}`)
+  console.log(`sID:, ${process.env.sID}`)
 });
