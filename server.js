@@ -11,7 +11,6 @@ dotenv.config({
 
 const app = express();
 
-
 const getSubscribedId = async()=>{
 
   try {
@@ -40,7 +39,7 @@ const resetPin = async (id) => {
 };
 
 
-const resetAll = async ()=>{
+const resetAll = async () => {
   const m_planIds = await getSubscribedId()
   for(let i = 0; i < m_planIds.length; i++){
     await resetPin(m_planIds[i])
@@ -48,8 +47,7 @@ const resetAll = async ()=>{
 
 }
 
-
-cron.schedule('30 0 * * *', () => {
+cron.schedule("30 0 * * *", () => {
   resetAll()
 }, {
   scheduled: true,
