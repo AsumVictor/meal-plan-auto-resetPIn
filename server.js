@@ -48,13 +48,12 @@ const resetAll = async () => {
 
 }
 
-cron.schedule("30 4 * * *", () => {
+cron.schedule("*/1440 * * * *", () => {
   resetAll()
 }, {
   scheduled: true,
   timezone: "GMT" 
 });
-
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
