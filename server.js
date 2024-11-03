@@ -48,7 +48,7 @@ const resetAll = async () => {
 
 }
 
-cron.schedule("*/1440 * * * *", () => {
+cron.schedule("47 1 * * *", () => {
   resetAll()
 }, {
   scheduled: true,
